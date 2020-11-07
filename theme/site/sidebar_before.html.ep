@@ -1,0 +1,42 @@
+% my $sidebar_path = $self->path->parent eq '/' ? '/' : $self->path->parent . "/";
+
+<a class="home <%= "hideme" if $self->path->parent eq '/' %>" href="/">
+    <div id="title1">Minimum</div>
+    <div id="title2">Viable</div>
+    <div id="title3">Perl</div>
+</a>
+
+<div class='animated bounceInDown'>
+  <ul>
+% my $toc = $site->data->{toc};
+% for (my $i = 0; $i < scalar @$toc; $i++) {
+%     my $chapter = $toc->[$i];
+    <li class='<%= $chapter->{anchor} %> sub-menu'>
+      <a href='<%= $sidebar_path %>#<%= $chapter->{anchor} %>'><div class='fa fa-caret-down caret'></div><%= $chapter->{number} %>. <%= $chapter->{title} %></a>
+      <ul>
+%     for (my $i = 0; $i < scalar @{ $chapter->{articles} }; $i++) {
+%         my $article = $chapter->{articles}->[$i];
+        <li><a href='<%= $article->{href} %>'><%= $article->{number} %>. <%= $article->{toc_title} || $article->{title} %></a></li>
+%     }
+      </ul>
+    </li>
+% }
+    <li class='reference sub-menu section'>
+      <a href='<%= $sidebar_path %>#basics'><div class='fa fa-caret-down caret'></div>Official Perl docs</a>
+      <ul>
+        <li><a href="https://perldoc.perl.org/index-functions.html">Functions A-Z</a></li>
+        <li><a href="https://perldoc.perl.org/index-functions-by-cat.html">Functions by category</a></li>
+        <li><a href="https://perldoc.perl.org/perlop.html">Operators</a></li>
+        <li><a href="https://perldoc.perl.org/perlvar.html">Special variables</a></li>
+        <li><a href="https://perldoc.perl.org/index-pragmas.html">Pragmas</a></li>
+        <li><a href="https://perldoc.perl.org/index-modules-A.html">Core modules</a></li>
+        <li><a href="https://perldoc.perl.org/index-language.html">Language reference</a></li>
+      </ul>
+    </li>
+    <li class="section"><a href='/community'>Community</a></li>
+    <li class="section"><a href='/books'>Perl books</a></li>
+    <li class="section"><a href='https://jobs.perl.org'>Perl jobs</a></li>
+    <li><a href='/about'>About</a></li>
+  </ul>
+</div>
+<div class="subscribe">This book is a work in progress.  <a href="/subscribe/">Subscribe</a> to get new chapters in your inbox.</div>

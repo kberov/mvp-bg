@@ -1,4 +1,4 @@
-The code:
+Кодът:
 
     #!/usr/bin/env perl
     use strict;
@@ -6,22 +6,23 @@ The code:
     
     print "hello world\n";
 
-How to run it:
+Как се пуска:
 
     $ perl hello.pl
     hello world
 
-#### strict and warnings
+#### strict и warnings
 
-It's considered bad form if you don't
-[use](https://perldoc.perl.org/functions/use.html)
-[strict](https://perldoc.perl.org/strict.html) and
-[warnings](https://perldoc.perl.org/warnings.html) in all your code.
+Лоша практика е да не използвате
+([use](https://perldoc.perl.org/functions/use.html))
+[strict](https://perldoc.perl.org/strict.html) и
+[warnings](https://perldoc.perl.org/warnings.html) навсякъде в програмите си.
 
-- `use strict` makes it an error to use certain expressions.
-- `use warnings` enables additional warnings for certain expressions.
+- `use strict` прави така, че използването на някои изрази да се смятат за грешки.
+- `use warnings` включва допълнителни предупреждения при някои изрази.
 
-Both aim to protect the developer from bad old syntax which
-the Perl interpreter accepts as valid but will most likely cause your code
-to behave unexpectedly and cause errors that are hard to debug.  
+И двата израза целят да предотвратят използването на стар лош синтаксис, който
+интерпретаторът на Perl приема като правилен, но най-вероятно ще допусне
+непредвидено поведение на вашия код и грешки, които са много трудни за
+откриване.
 

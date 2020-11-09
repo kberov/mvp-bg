@@ -32,7 +32,7 @@ site:
     args:
 
         # title: This is the title of the site, shown in the <title> tag
-        title: 'Minimum Viable Perl'
+        title: 'Възможно най-малко Perl'
 
         # base_url: This is the base URL the site will be deployed to. It
         # should be a full URL, and may contain a path, like:
@@ -41,7 +41,7 @@ site:
         #
         # If the base_url contains a path, all internal links will be
         # rewritten appropriately.
-        base_url: 'http://mvp.kablamo.org'
+        base_url: 'http://mvp.i-can.eu'
 
         # apps: These are the applications in this site. The name of the app,
         # "blog", "page", or "static", is used to refer to it in commands.
@@ -93,13 +93,13 @@ site:
 
         data:
             toc:
-                - title: 'Syntax'
+                - title: 'Синтаѯис'
                   number: 1
                   anchor: 'basics'
                   articles:
                     - {number: '1.1',  title: 'Hello world',         href: '/basics/hello/'}
-                    - {number: '1.2',  title: 'Variables',           href: '/basics/variables/'}
-                    - {number: '1.3',  title: 'References',          href: '/basics/references/'}
+                    - {number: '1.2',  title: 'Променливи',           href: '/basics/variables/'}
+                    - {number: '1.3',  title: 'Референции',          href: '/basics/references/'}
 #                   - {number: '1.4',  title: 'Context',             href: '/basics/references/'}
                     - {number: '1.4',  title: 'Functions',           href: '/basics/functions/'}
                     - {number: '1.5',  title: 'Conditionals',        href: '/basics/flow/'}

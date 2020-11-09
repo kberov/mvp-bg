@@ -1,77 +1,78 @@
-You will need to understand references.  However its also <i>the most
-frustrating</i> and time consuming part of learning Perl for everyone.  If you
-can master this you will be able to read and write Perl code.  <i>Be sure to
-read the section "Key Things to Remember" at the bottom! </i>
+Нужно е да разбирате референциите. Това обаче е <i>най-трудната</i> и времеемка
+част ѿ усвояванаето на Perl. Ако усвоите референциите, ще можете да четете и
+пишете код на Perl. <i>Непременно прочетете „Най-важнѿо за запомняне”
+по-долу.</i>
 
-#### What is a reference?
-A reference is like a pointer.  It's a scalar value containing the address of
-another value.  Perl will not automatically dereference a variable for you.
-References are scalars so they always start with a <code>$</code>.  
+#### Какво е референция?
+Референцията е като указател. Представлява скаларна променлива, съдържаща
+адреса на друга стойност. Perl няма да дереферира аѡоматично стойността на
+променливата. Референциите са скалари, така че започват с <code>$</code>.
 
-#### Array references
+#### Референции към масиви
 
-Also called array refs for short.
+На английски често се споменават като array refs за по-кратко.
 
-    my @array = (1, 2, 3, 4);             # array
-    my $arrayref1 = \@array;              # array reference
-    my $arrayref2 = ['a', 'b', 'c', 'd']; # array reference
+    my @array = (1, 2, 3, 4);             # масив
+    my $arrayref1 = \@array;              # референция към масив
+    my $arrayref2 = ['a', 'b', 'c', 'd']; # референция към масив
 
-    # Access element 0 of the array
-    print $array[0];       # prints 1
+    # Достъп до нулевия елемент ѿ масива
+    print $array[0];       # ѿпечатва 1
 
-    # Dereference + access element 0
-    print $arrayref1->[0]; # prints 1
-    print $arrayref2->[0]; # prints 'a'
+    # Дерефериране и достъпване на елемент 0
+    print $arrayref1->[0]; # ѿпечатва 1
+    print $arrayref2->[0]; # ѿпечатва 'a'
 
-    # A array reference inside a array reference
+    # Референция към масив в референция към масив
     my $arrays_in_arrays = [a, b, c, ['roo', 'woo', 'loo']];
 
-    # How to dereference array references
+    # Как да дереферираме референции към масиви
     my @array1 = @{ $arrays_in_arrays };      # (a, b, c ['roo', 'woo', 'loo'])
-    my @array2 = @$arrays_in_arrays;          # same but less typing
+    my @array2 = @$arrays_in_arrays;          # същѿо, но с по-малко писане
     my @array3 = @{ $arrays_in_arrays->[3] }; # ('roo', 'woo', 'loo')
 
-#### Hash references
+#### Референции към хешове
 
-Also called hash refs for short.
+Също ще видите да ги споменават като hash refs за по-кратко.
 
-    my %hash = (a => 1, b => 2, c => 3);        # hash
-    my $hashref1 = \%hash;                      # hash reference
-    my $hashref2 = {x => 11, y => 12, z => 13}; # hash reference
+    my %hash = (a => 1, b => 2, c => 3);        # хеш
+    my $hashref1 = \%hash;                      # хеш-референция
+    my $hashref2 = {x => 11, y => 12, z => 13}; # хеш-референция
 
-    # Access hash value 
-    print $hash{a};       # prints 1
+    # Достъп до стойност
+    print $hash{a};       # ѿпечатва 1
 
-    # Dereference + access hash value 
-    print $hashref1->{a}; # prints 1
-    print $hashref2->{x}; # prints 11
+    # Дерефериране и достъп до стойност
+    print $hashref1->{a}; # ѿпечатва 1
+    print $hashref2->{x}; # ѿпечатва 11
 
-    # A hash reference inside a hash reference
-    my $hashes_in_hashes = { 
+    # хеш-референция в хеш-референция
+    my $hashes_in_hashes = {
         a => 1,
         b => 2,
         c => { x => 1, y => 2 },
     };
 
-    # How to dereference hash references
+    # Как да дереферираме хеш-референции
     my %hash1 = %{ $hashes_in_hashes };      # (a => 1, b => 2, c => {x => 1, y => 2})
-    my %hash2 = %$hashes_in_hashes;          # same but less typing
+    my %hash2 = %$hashes_in_hashes;          # същото, но с по-малко писане
     my %hash3 = %{ $hashes_in_hashes->{c} }; # (x => 1, y => 2)
 
-#### Code references 
+#### Референции към код
 
-AKA code refs, anonymous subroutines, anonymous functions, closures, or callbacks.
+Наричат ги още code refs, анонимни подпрограми, анонимни функции затваряния (closures), или обратни извиквания (callbacks).
 
     my $coderef = sub { print "stegasaurus" };
-    # Dereference and run the subroutine
+    # Дерефериране и изпълняване на подпрограма
     $coderef->(); # prints "stegasaurus"
 
-#### Key things to remember
+#### Най-важнѿо за запомняне
 
-Mastering this topic requires some memorization and a lot of practice.  Key things to remember:
+З да усвоите тази тема е нужно малко наизустяване и и много практика.
+Най-важните неща:
 
-- <code>[ ... ]</code> creates a array reference
-- <code>{ ... }</code> creates a hash reference
-- <code>@$var</code> or <code>@{ ... }</code> dereferences a array
-- <code>%$var</code> or <code>%{ ... }</code> dereferences a hash
+- Изразът <code>[ ... ]</code> създава референция към масив;
+- Изразът <code>{ ... }</code> създава референция към хеш;
+- Изразът <code>@$var</code> или <code>@{ ... }</code> дереферира масив;
+- Изразът <code>%$var</code> или <code>%{ ... }</code> дереферира хеш.
 
